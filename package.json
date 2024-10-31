@@ -1,0 +1,15 @@
+{
+  "name": "birreria",
+  "version": "1.0.0",
+  "description": "Gestione di una pagina web per ordinare e aggiungere birre",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx tsc -p ./tsconfig.json --watch"
+  },
+  "author": "Riccardo Romagnoli",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

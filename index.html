@@ -35,13 +35,17 @@
                             <input id="nameInput" type="text" class="form-control" aria-describedby="nameDesc">
                         </div>
                         <div class="input-group mb-3">
+                            <span class="input-group-text" id="descDesc">Descrizione</span>
+                            <input id="descInput" type="text" class="form-control" aria-describedby="descDesc">
+                        </div>
+                        <div class="input-group mb-3">
                           <span class="input-group-text" id="priceDesc">Prezzo</span>
                           <input id="priceInput" type="text" class="form-control" aria-describedby="priceDesc">
-                        </div>                                                    
+                        </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                      <button type="button" class="btn btn-primary" onclick="createNewBeer(nameInput.value, parseFloat(priceInput.value))" data-bs-dismiss="modal">Aggiungi</button>
+                      <button type="button" class="btn btn-primary" onclick="createNewBeer(nameInput.value, parseFloat(priceInput.value), descInput.value)" data-bs-dismiss="modal">Aggiungi</button>
                     </div>
                   </div>
                 </div>

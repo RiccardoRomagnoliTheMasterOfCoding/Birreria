@@ -25,11 +25,13 @@ let orders: Order[] = [];
 
 function createNewBeer(name: string, price: number, description: string) {
     if (isFinite(price) && price > 0) {
-        menu.push({ id: menu[menu.length - 1].id + 1, name: name, price: price, description: description });
+        menu.push({ id: menu.length, name: name, price: price, description: description });
         populateBeerList(menu);
         menu.forEach(beer => {
             updateUI(beer.id, document.getElementById(`${beer.id}_requested`));
         });
+        clearInputFields();
+        updateLog(`Added beer ${name}`);
     }
 }
 
@@ -65,6 +67,7 @@ function addBeer(id: number) {
 
     let badge = document.getElementById(`${id}_requested`);
     updateUI(id, badge);
+    updateLog(`Ordered beer ${beer.name}`);
 }
 
 function serveBeer(id: number) {
@@ -73,15 +76,27 @@ function serveBeer(id: number) {
     if (idxToServe !== -1) {
         orders[idxToServe].status = "served";
         totalPrice = parseFloat((totalPrice - beer!.price).toFixed(2));
+        let badge = document.getElementById(`${id}_requested`);
+        updateUI(id, badge);
+        updateLog(`Served beer ${beer.name}`);
     }
-
-    let badge = document.getElementById(`${id}_requested`);
-    updateUI(id, badge);
 }
 
 function updateUI(id: number, badge: HTMLElement) {
     badge!.innerHTML = orders.filter(order => order.beerId == id && order.status == "ordered").length.toString();
     document.getElementById('totalPrice')!.innerHTML = totalPrice.toString();
+}
+
+function clearInputFields() {
+    (document.getElementById('nameInput') as HTMLInputElement).value = "";
+    (document.getElementById('descInput') as HTMLInputElement).value = "";
+    (document.getElementById('priceInput') as HTMLInputElement).value = "";
+}
+
+function updateLog(message: string) {
+    let log = document.getElementById('log');
+    log.textContent += message + '\n';
+    log.scrollTop = log.scrollHeight;
 }
 
 populateBeerList(menu);

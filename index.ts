@@ -24,7 +24,7 @@ let totalPrice: number = 0;
 let orders: Order[] = [];
 
 function createNewBeer(name: string, price: number, description: string) {
-    if (isFinite(price) && price > 0) {
+    if (name.length > 0 && isFinite(price) && price > 0) {
         menu.push({ id: menu.length, name: name, price: price, description: description });
         populateBeerList(menu);
         menu.forEach(beer => {

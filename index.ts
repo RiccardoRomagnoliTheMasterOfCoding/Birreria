@@ -31,7 +31,7 @@ function createNewBeer(name: string, price: number, description: string) {
             updateUI(beer.id, document.getElementById(`${beer.id}_requested`));
         });
         clearInputFields();
-        updateLog(`Added beer ${name}`);
+        updateLog(`[NEW] Added beer ${name}`);
     }
 }
 
@@ -67,7 +67,7 @@ function addBeer(id: number) {
 
     let badge = document.getElementById(`${id}_requested`);
     updateUI(id, badge);
-    updateLog(`Ordered beer ${beer.name}`);
+    updateLog(`[+] Ordered beer ${beer.name}`);
 }
 
 function serveBeer(id: number) {
@@ -78,7 +78,7 @@ function serveBeer(id: number) {
         totalPrice = parseFloat((totalPrice - beer!.price).toFixed(2));
         let badge = document.getElementById(`${id}_requested`);
         updateUI(id, badge);
-        updateLog(`Served beer ${beer.name}`);
+        updateLog(`[-] Served beer ${beer.name}`);
     }
 }
 
